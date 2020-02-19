@@ -1,5 +1,5 @@
 <?php 
-class Personne
+class Film
 {
 	
 	// Propriétés
@@ -7,19 +7,23 @@ class Personne
     private $sortie;
     private $duree;
     private $synopsis;
-    private $real;
+    private $realisateur;
+    private $acteur;
 
 	
 	
 	// Méthodes
 	// Liste des getters
-	public function __construct($titre,$sortie,$duree,$synopsis,$real)
+	public function __construct($titre,$sortie,$duree,$synopsis,$realisateur,$acteur)
     {
         $this->titre = $titre;
         $this->sortie = $sortie;
         $this->duree = $duree;
-        $this->duree = $synopsis;
-        $this->duree = $real;
+        $this->synopsis = $synopsis;
+        $realisateur->addFilm($this);
+        $this->realisateur = $realisateur;
+        $acteur->addFilm($this);
+        $this->acteur = $acteur;
 
     }
 
@@ -39,9 +43,13 @@ class Personne
 	{
 		return $this->synopsis;
     }
-    public function getReal()
+    public function getRealisateur()
 	{
-		return $this->Real;
+		return $this->realisateur;
+    }
+    public function getActeur()
+	{
+		return $this->acteur;
 	}
 	
 	
@@ -65,10 +73,18 @@ class Personne
         
             $this->duree = $duree;
     }	
-    public function setReal($real)
+    public function seRrealisateur($realisateur)
     {
         
-            $this->real = $real;
+            $this->realisateur = $realisateur;
+    }
+    public function setActeur($acteur)
+    {
+            $this->acteur = $acteur;
     }	
+    public function affichReal()
+    {
+        echo '<div>titulaire : '.$this->realisateur->getNom().'</div>';
+    }
 }
 ?>
