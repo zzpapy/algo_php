@@ -226,7 +226,7 @@ class Personne
 
     public function __toString()
     {
-        return $this->nom." ".$this->prenom." ".$this->date;
+        // return $this->nom." ".$this->prenom." ".$this->date;
     }
     public function getAge(){
         $now = new DateTime();
@@ -428,7 +428,6 @@ include 'compte.class.php';
 $tit1 = new titulaire("muller","jean","20-03-1976","strasbourg");
 $comp1 = new compte($tit1,"courrant",1000,"euros");
 $comp2 = new compte($tit1,"diff",500,"zloti");
-var_dump($comp1);
 $affich=($tit1->affichInfo());
 $affich_compte=($comp1->affichInfo());
 
@@ -437,13 +436,16 @@ include 'film.class.php';
 include 'real.class.php';
 include 'acteur.class.php';
 $real= new Realisateur("muller","jean","20-03-1969");
+$real1= new Realisateur("tchan","jacky","21-11-1980");
 $acteur= new Acteur("capone","al","14-12-1973S");
 $acteur1= new Acteur("toto","tata","14-12-1973S");
-$film = new Film("titre","sortie","duree","synopsis", $real,$acteur);
+$film = new Film("titre","sortie","duree","synopsis", $real1,$acteur1);
 $film1 = new Film("le chat","12-12-1989",90,"histoire d'un chat",$real,$acteur);
 $film2 = new Film("le chien","01-01-2012",60,"histoire d'un chien",$real,$acteur);
+// $film->affichReal();
 $film->affichReal();
-$real->affichFilm();
+$acteur->affichFilm();
+// var_dump($film->getActeur());
 // var_dump($film->getRealisateur()->getNom());
 
 

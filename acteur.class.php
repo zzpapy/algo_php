@@ -28,10 +28,13 @@ class Acteur extends Personne
         array_push($this->film,$film);
     }
 
-	
-
-	// Liste des setters
-	
+	public function affichFilm()
+    {
+		foreach ($this->film as $key => $value) {
+			echo "acteur : ".$this->getNom()."<br>titre du film : ".$value->getTitre();
+			echo '<br><br><br>';
+		}
+    }
 	
     
 	

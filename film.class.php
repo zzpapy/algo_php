@@ -84,7 +84,8 @@ class Film
     }	
     public function affichReal()
     {
-        echo '<div>titulaire : '.$this->realisateur->getNom().'</div>';
+        echo '<div>nom du réalisateur : '.$this->realisateur->getNom().'</div>';
     }
+    
 }
 ?>

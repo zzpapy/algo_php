@@ -29,7 +29,7 @@ class Realisateur extends Personne
 	public function affichFilm()
     {
 		foreach ($this->film as $key => $value) {
-			var_dump($value->getRealisateur());
+			echo 'titre du film '.$value->getTitre();
 			echo '<br><br><br>';
 		}
     }
