@@ -55,7 +55,10 @@ class Compte
     }
 
     //méthode
-
+    public function affichInfo()
+    {
+        echo '<div>titulaire : '.$this->titulaire->getNom().' '.$this->titulaire->getPrenom().'</div><div> solde:'.$this->getSolde().'</div><div> Devise : '.$this->getDevise();
+    }
    
 }
 ?>

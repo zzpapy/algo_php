@@ -87,10 +87,11 @@ class Titulaire
     {
         echo "<div>nom et prénom :".$this->nom." ".$this->prenom."<div>Age :".
         $this->getAge()."</div><div> Ville : ".$this->ville."</div>";
+        echo '<table><tr><td>libelle</td><td>solde</td><td>devise</td></tr>';
         foreach ($this->compte as $key => $value) {
-            # code...
+            echo '<tr><td>'.$value->getLibelle().'<td>'.$value->getSolde().'</td><td>'.$value->getDevise().'</td></tr>';
         }
-        // <div> comptes : ".count($this->compte)."</div>
+        echo '</table>';
     }
 }
 ?>

@@ -429,11 +429,6 @@ $tit1 = new titulaire("muller","jean","20-03-1976","strasbourg");
 $comp1 = new compte($tit1,"courrant",1000,"euros");
 $comp2 = new compte($tit1,"diff",500,"zloti");
 $affich=($tit1->affichInfo());
-echo '<script
-src="https://code.jquery.com/jquery-3.4.1.min.js"
-integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-crossorigin="anonymous"></script>
-<script';
-// var_dump($affich);
+$affich_compte=($comp1->affichInfo());
 ?>
   
