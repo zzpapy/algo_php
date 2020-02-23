@@ -24,6 +24,7 @@ class Realisateur extends Personne
 	}
 	
 	public function addFilm(film $film){
+		
         array_push($this->film,$film);
 	}
 	public function affichFilm()
