@@ -14,16 +14,18 @@ class Film
 	
 	// Méthodes
 	// Liste des getters
-	public function __construct($titre,$sortie,$duree,$synopsis,$realisateur,$acteur)
+	public function __construct($titre,$sortie,$duree,$synopsis,$realisateur,$acteur,$genre)
     {
         $this->titre = $titre;
         $this->sortie = $sortie;
         $this->duree = $duree;
         $this->synopsis = $synopsis;
-        $realisateur->addFilm($this);
         $this->realisateur = $realisateur;
-        $acteur->addFilm($this);
-        $this->acteur = $acteur;
+        $realisateur ->addFilm($this);
+        $this->acteur = [];
+        $acteur ->addFilm($this);
+        // $this->genre = $genre;
+        $genre ->addFilm($this);
 
     }
 
@@ -50,6 +52,10 @@ class Film
     public function getActeur()
 	{
 		return $this->acteur;
+    }
+    public function getGenre()
+	{
+		return $this->genre;
 	}
 	
 	

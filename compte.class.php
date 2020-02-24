@@ -59,6 +59,17 @@ class Compte
     {
         echo '<div>titulaire : '.$this->titulaire->getNom().' '.$this->titulaire->getPrenom().'</div><div> solde:'.$this->getSolde().'</div><div> Devise : '.$this->getDevise();
     }
+    public function crediter($val){
+        return $this->solde += $val;
+    }
+    public function debiter($val){
+        return $this->solde -= $val;
+    }
+    public function virement($val,$compte){
+        $solde = $compte -> getSolde();
+        $compte -> setSolde($solde - $val);
+        return $this->solde += $val;
+    }
    
 }
 ?>

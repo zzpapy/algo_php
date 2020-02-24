@@ -249,24 +249,24 @@ echo '<div>',$p1->getPrenom(),' ',$p1->getNom(),' a ',$interval,'</div>';
 echo '<div>',$p2->getPrenom(),' ',$p2->getNom(),' a ',$interval1,'</div>';
 
 
- echo "<div>exo 1-2</div>";
+ echo "<h1>exo 1-2</h1>";
 
 // var_dump(mb_strtoupper('Totoà'));
 
   function convertirMajRouge($string){
       $color='red';
     $string=mb_strtoupper($string);
-    return '<div style="'.$color.'">'.$string.'</div>';
+    return '<div style="color:'.$color.'">'.$string.'</div>';
   }
   echo convertirMajRouge('Bonjour je suis à CDA');
 
-  echo "<div>exo 2-2</div>";
+  echo "<h1>exo 2-2</h1>";
   $capitales = array ("France"=>"Paris","Allemagne"=>"Berlin","USA"=>"Washington","Italie"=>"Rome");
   function afficherTableHTML($tab){
       ksort($tab);
       echo '<table><thead><td>Pays</td><td>Capitale</thead></tr>';
       foreach ($tab as $key => $value) {
-        echo '<tr><td>'.mb_strtoupper($key).'</td><td>'.$value.'</td>';
+        echo '<tr><td style="font-weight:bold">'.mb_strtoupper($key).'</td><td>'.$value.'</td>';
       }
       echo '</table>';
       echo '<style> tr,td{border:1px solid black;} thead{font-weight:bold}</style>';
@@ -275,116 +275,126 @@ echo '<div>',$p2->getPrenom(),' ',$p2->getNom(),' a ',$interval1,'</div>';
 
   echo '<div>exo 3-2<a href="https://elan-formation.eu/" target="_blank">ELAN</a></div>';
   
-  echo "<div>exo 4-2</div>";
-  $capitales = array ("France"=>["Paris","https://fr.wikipedia.org/wiki/"],"Allemagne"=>["Berlin","https://fr.wikipedia.org/wiki/"],"USA"=>["Washington","https://fr.wikipedia.org/wiki/"],"Italie"=>["Rome","https://fr.wikipedia.org/wiki/"]);
+  echo "<h1>exo 4-2</h1>";
+  $capitales = array ("France"=>["Paris","https://fr.wikipedia.org/wiki/"],"Allemagne"=>["Berlin","https://fr.wikipedia.org/wiki/"],"USA"=>["Washington","https://fr.wikipedia.org/wiki/"],"Italie"=>["Rome","https://fr.wikipedia.org/wiki/"],"Espagne"=>["Madrid","https://fr.wikipedia.org/wiki/"]);
   function afficherTableLink($tab){
-    ksort($tab);
+    asort($tab);
     echo '<table><thead><td>Pays</td><td>Capitale</thead></tr>';
     foreach ($tab as $key => $value) {
-      echo '<tr><td>'.mb_strtoupper($key).'</td><td>'.$value[0].'</td><td><a href='.$value[1].' target="_blank">link</a></td>';
+      echo '<tr><td>'.mb_strtoupper($key).'</td><td>'.$value[0].'</td><td><a href="'.$value[1].'" target="_blank">link</a></td>';
     }
     echo '</table>';
     echo '<style> tr,td{border:1px solid black;} thead{font-weight:bold}</style>';
 }
 afficherTableLink($capitales);
-echo "<div>exo 5-2</div>";
+echo "<h1>exo 5-2</h1>";
 
 function afficherInput($tab){
+    $res= "<form>";
     foreach ($tab as $value) {
-        echo '<div>'.$value.'<input type="text" placeholder="'.$value.'"></div>';
+        $res .='<div>'.$value.'<input type="text" placeholder="'.$value.'"></div>';
+        $res .= "</form>";
     }
+    return $res;
 }
 
 $nomsInput = array("Nom","Prénom","Ville");
-afficherInput($nomsInput);
+echo afficherInput($nomsInput);
 
-echo "<div>exo 6-2</div>";
+echo "<h1>exo 6-2</h1>";
 
 $elements = array("Monsieur","Madame","Mademoiselle");
 
 function alimenterListeDeroulante($tab){
-    echo '<select>';
+    $res = '<select>';
     foreach ($tab as  $value) {
-        echo '<option value="'.$value.'">'.$value.'</option>';
+        $res .= '<option value="'.$value.'">'.$value.'</option>';
     }
-    echo '</select>';
+    $res .= '</select>';
+    return $res;
 }
-alimenterListeDeroulante($elements);
+echo alimenterListeDeroulante($elements);
 
-echo "<div>exo 7-2</div>";
-$elements=["choix1"=>"checked","choix2"=>"unchecked","choix3"=>"unchecked"];
+echo "<h1>exo 7-2</h1>";
+$elements=["choix1"=>"unchecked","choix2"=>"checked","choix3"=>"unchecked"];
 function genererCheckbox($tab){
+    $res ="<div>";
     foreach ($tab as $key => $value) {
         if($value=="checked"){
           
-            echo '<div><label> '.$key.'</label><input type="checkbox" value="'.$key.'" '.$value.'></div>';
+            $res .= '<div><label> '.$key.'</label><input type="checkbox" value="'.$key.'" '.$value.'></div>';
         }
         else{
-            echo '<div><label> '.$key.'</label><input type="checkbox" value="'.$key.'"></div>';
+            $res .= '<div><label> '.$key.'</label><input type="checkbox" value="'.$key.'"></div>';
         }
     }
+    $res .= "</div>";
+    return $res;
 }
-genererCheckbox($elements);
+echo genererCheckbox($elements);
 
-echo "<div>exo 8-2</div>";
+echo "<h1>exo 8-2</h1>";
 
 function repeaatImg($img,$nbr){
     var_dump($img);
     $i=1;
-    echo '<div style="display:flex;justify-content: space-around;">';
+    $res = '<div style="display:flex;justify-content: space-around;">';
     while($i<=$nbr){
-        echo '<div style="width:150px;height:150px;"><img style="max-width:100% " src="'.$img.'" alt=""></div>';
+        $res .= '<div style="width:150px;height:150px;"><img style="max-width:100% " src="'.$img.'" alt=""></div>';
         $i++;
     }
-    echo '</div>';
+    $res .=  '</div>';
+    return $res;
 
 }
-repeaatImg("chien.jpg",4);
+echo repeaatImg("chien.jpg",7);
 
 
-echo "<div>exo 9-2</div>";
-$elements = array("Monsieur","Madame","Mademoiselle");
-$elements=["choix1"=>"checked","choix2"=>"unchecked","choix3"=>"unchecked"];
+echo "<h1>exo 9-2</h1>";
+// $elements = array("Monsieur","Madame","Mademoiselle");
+$elements=["Monsieur"=>"checked","Madame"=>"unchecked","Mademoiselle"=>"unchecked"];
 function genererRadioButton($tab){
     foreach ($tab as $key => $value) {
-        if($value=="checked"){
+       
           
-            echo '<div><label>'.$key.'</label><input type="radio" value="'.$key.'" '.$value.'></div>';
-        }
-        else{
-            echo '<div><label>'.$key.'</label><input type="radio" value="'.$key.'"></div>';
-        }
+            echo '<div><label>'.$key.'</label><input type="radio" name = "toto" value="'.$key.'" '.$value.'></div>';
+        
+            
     }
 }
 genererRadioButton($elements);
 
 
-echo "<div>exo 10-2</div>";
+echo "<h1>exo 10-2</h1>";
 echo "<form action=''>";
 $nomsInput = array("Nom","Prénom","adresse mail","Ville","sexe");
-afficherInput($nomsInput);
+echo afficherInput($nomsInput);
 $elements = array("Développeur Logiciel","Designer web","Intégrateur","Chef de projet");
 genererRadioButton($elements);
 echo '<button>Valider</button></form>';
 
-echo "<div>exo 11-2</div>";
+echo "<h1>exo 11-2</h1>";
+
+// setlocale(LC_ALL, "fr_FR,utf-8)
+// strftime("%A %d %B %Y , strtotime($date))
+
 function formaterDateFr($date){
     $tradDay=["mon"=>"lundi","tue"=>"mardi","wed"=>"mercredi","thu"=>"jeudi","fri"=>"vendredi","sat"=>"samedi","sun"=>"dimanche"];
     $tradMonth=["jan"=>"janvier","feb"=>"février","mar"=>"mars","apr"=>"avril","may"=>"mai","jun"=>"juin","jul"=>"juillet","aug"=>"aout","sep"=>"septembre","oct"=>"octobre","nov"=>"novembre","dec"=>"décembre"];
      $date= new DateTime($date);
-     echo $tradDay[mb_strtolower (str_replace("%", "", $date->format('%D')))].' le '.str_replace("%", "",$date->format('%d')).' '. $tradMonth[mb_strtolower (str_replace("%", "", $date->format('%M')))].' '. str_replace("%","",$date->format('%Y'));
+     return $tradDay[mb_strtolower (str_replace("%", "", $date->format('%D')))].' le '.str_replace("%", "",$date->format('%d')).' '. $tradMonth[mb_strtolower (str_replace("%", "", $date->format('%M')))].' '. str_replace("%","",$date->format('%Y'));
  }
 
-formaterDateFr("2018-10-24");
+echo formaterDateFr("2018-10-24");
 
-echo "<div>exo 12-2</div>";
+echo "<h1>exo 12-2</h1>";
 
 $tableauValeurs=array(true,"texte",10,25.369,array("valeur1","valeur2"));
 foreach ($tableauValeurs as $key => $value) {
     var_dump($value);
 }
 
-echo "<div>exo 13-2</div>";
+echo "<h1>exo 13-2</h1>";
 include 'Voiture.class.php';
 $v1 = new Voiture("peugeot","407","5");
 $v2 = new Voiture("citroene","c3","3");
@@ -399,7 +409,7 @@ echo $v1 -> vitesseEnCours().'<br>';
 
 echo $v1->vitesse('toto').'<br>';
 
-echo "<div>exo 14-2</div>";
+echo "<h1>exo 14-2</h1>";
 
 include 'VoitureBis.class.php';
 
@@ -407,7 +417,7 @@ $v1 = new VoitureElec("bmw","i3","100");
 echo $v1->getInfos();
 $v2 = new VoitureBis("fiat","panda");
 echo $v2 -> getInfos();
-echo "<div>exo 15-2</div>";
+echo "<h1>exo 15-2</h1>";
 
 $email_a = 'elan@elan-formation.fr';
 $email_b = 'contact@elan';
@@ -421,31 +431,43 @@ if (filter_var($email_b, FILTER_VALIDATE_EMAIL)) {
     echo "L'adresse email '$email_b' est considérée comme invalide.<br>";
 }
 
-echo "<div>exo 16-2</div>";
+echo "<h1>exo 16-2</h1>";
 include 'titulaire.class.php';
 include 'compte.class.php';
 
-$tit1 = new titulaire("muller","jean","20-03-1976","strasbourg");
-$comp1 = new compte($tit1,"courrant",1000,"euros");
-$comp2 = new compte($tit1,"diff",500,"zloti");
+$tit1 = new Titulaire("muller","jean","20-03-1976","strasbourg");
+$comp1 = new Compte($tit1,"courrant",1000,"euros");
+$comp2 = new Compte($tit1,"diff",500,"zloti");
+$comp1->crediter(100);
+$comp1->debiter(100);
+$comp2->virement(200,$comp1);
 $affich=($tit1->affichInfo());
 $affich_compte=($comp1->affichInfo());
+$affich_compte=($comp2->affichInfo());
 
-echo "<div>exo cine</div>";
-include 'film.class.php';
-include 'real.class.php';
-include 'acteur.class.php';
+echo "<h1>exo cine</h1>";
+include 'Film.class.php';
+include 'Real.class.php';
+include 'Acteur.class.php';
+include 'Genre.class.php';
+include 'Role.class.php';
+include 'RelRealFilm.class.php';
 $real= new Realisateur("muller","jean","20-03-1969");
-$real1= new Realisateur("tchan","jacky","21-11-1980");
+// $real1= new Realisateur("tchan","jacky","21-11-1980");
 $acteur= new Acteur("capone","al","14-12-1973S");
-$acteur1= new Acteur("toto","tata","14-12-1973S");
-$film = new Film("titre","sortie","duree","synopsis", $real1,$acteur1);
-$film1 = new Film("le chat","12-12-1989",90,"histoire d'un chat",$real,$acteur);
-$film2 = new Film("le chien","01-01-2012",60,"histoire d'un chien",$real,$acteur);
-// $film->affichReal();
-$film->affichReal();
+$genre = new Genre("policier");
+$genre1 = new Genre("aventure");
+// $acteur1= new Acteur("toto","tata","14-12-1973S");
+$film = new Film("titre","sortie","duree","synopsis", $real,$acteur,$genre);
+$role = new Role("inspecteur",$film);
+$film1 = new Film("le chat","12-12-1989",90,"histoire d'un chat",$real,$acteur,$genre);
+echo var_dump($genre -> getNom()).'<br>';
+var_dump($role);
+// $film2 = new Film("le chien","01-01-2012",60,"histoire d'un chien",$real,$acteur);
+// $film1->affichReal();
 $acteur->affichFilm();
-// var_dump($film->getActeur());
+// $film->affichReal();
+// $acteur->affichFilm();
 // var_dump($film->getRealisateur()->getNom());
 
 

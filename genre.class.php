@@ -1,9 +1,11 @@
 <?php 
-class Role extends Type
+
+include 'Type.class.php';
+class Genre extends Type
 {
 	
 	// Propriétés
-	private $nom ;
+    private $film =[];
    
 	
 	
@@ -15,25 +17,14 @@ class Role extends Type
         
 
     }
-
-    public function getNom()
+    public function getFilm()
     {
-        return $this->nom;
+        return $this->film;
     }	
-    
-	
-	
-
-	// Liste des setters
-	
-	
-    
-	public function setNom($nom)
-	{
-        
-        $this->nom = $nom;
-    
-    }
+    public function addFilm(film $film){
+		
+        array_push($this->film,$film);
+	}
     
 }
 ?>

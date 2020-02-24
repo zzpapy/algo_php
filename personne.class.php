@@ -1,6 +1,6 @@
 <?php 
-include 'acteur.class.php';
-include 'real.class.php';
+include 'Acteur.class.php';
+include 'Real.class.php';
 class Personne
 {
 	

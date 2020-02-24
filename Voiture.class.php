@@ -89,7 +89,7 @@
         {
             $actuel=$this->getEtat();
             if($actuel==1){
-                return "le véhicule est est démarré<br>";
+                return "le véhicule est démarré<br>";
             }
             else{
                 $this->setEtat(1);

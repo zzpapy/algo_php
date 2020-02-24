@@ -1,5 +1,4 @@
 <?php 
-include 'role.class.php';
 class Type
 {
 	

@@ -3,9 +3,6 @@ class Realisateur extends Personne
 {
 	
 	// Propriétés
-	private $nom ;
-    private $prenom;
-	private $date;
 	private $film;
 	
 	
