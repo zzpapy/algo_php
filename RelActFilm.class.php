@@ -1,26 +1,26 @@
 <?php 
-class relRealFilm 
+class RelActFilm 
 {
 	
 	// Propriétés
-    private $real ;
+    private $role ;
     private $film;
    
 	
 	
 	// Méthodes
 	// Liste des getters
-	public function __construct($real,$film)
+	public function __construct($role,$film)
     {
-        $this->real;
-        $this->film= array_push($this->film,$film);
+        $this->role = $role;
+        $this->film=[];
         
 
     }
 
-    public function getReal()
+    public function getRole()
     {
-        return $this->real;
+        return $this->role;
     }
     public function getFilm()
     {
@@ -37,5 +37,9 @@ class relRealFilm
 	public function addFilm(Film $film){
         array_push($this->film,$film);
     }
+    public function addrole(role $role){
+        array_push($this->role,$role);
+    }
+    
 }
 ?>

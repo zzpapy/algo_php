@@ -12,12 +12,12 @@ class Realisateur extends Personne
     {
 		parent::__construct($nom,$prenom,$date);
 		$this->film = [];
-    }
+	}
+	
 
-	public function test()
+	public function getFilm()
 	{
-		$nom = $this->getNom();
-		return $nom;
+		return $this->film;
 	}
 	
 	public function addFilm(film $film){
@@ -26,10 +26,14 @@ class Realisateur extends Personne
 	}
 	public function affichFilm()
     {
-		foreach ($this->film as $key => $value) {
-			echo 'titre du film '.$value->getTitre();
-			echo '<br><br><br>';
+		// var_dump($this->film);
+		$txt = 'le réalisateur '.$this->getNom().'à rélisé '.count($this->film).' film(s)<br>';
+		$i=0;
+		foreach ($this->film as $key ) {
+			$txt .=  'titre du film '.$i.': '.$key->getTitre().'<br>';
+			$i++;
 		}
+		return $txt;
     }
 
 	// Liste des setters

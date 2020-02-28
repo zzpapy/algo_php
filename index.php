@@ -1,4 +1,5 @@
-<?php 
+<?php
+// phpinfo(); 
 $string=" Notre formation DL commence aujourd'hui .";
 $nbr=strlen (  $string ) ;
 
@@ -452,24 +453,33 @@ include 'Acteur.class.php';
 include 'Genre.class.php';
 include 'Role.class.php';
 include 'RelRealFilm.class.php';
+include 'Casting.class.php';
 $real= new Realisateur("muller","jean","20-03-1969");
-// $real1= new Realisateur("tchan","jacky","21-11-1980");
+$real1= new Realisateur("tchan","jacky","21-11-1980");
+$real2= new Realisateur("Scorzese","Martin","20-03-1969");
+
 $acteur= new Acteur("capone","al","14-12-1973S");
+$acteur1= new Acteur("toto","tata","14-12-1973S");
+
 $genre = new Genre("policier");
 $genre1 = new Genre("aventure");
-// $acteur1= new Acteur("toto","tata","14-12-1973S");
-$film = new Film("titre","sortie","duree","synopsis", $real,$acteur,$genre);
-$role = new Role("inspecteur",$film);
-$film1 = new Film("le chat","12-12-1989",90,"histoire d'un chat",$real,$acteur,$genre);
-echo var_dump($genre -> getNom()).'<br>';
-var_dump($role);
-// $film2 = new Film("le chien","01-01-2012",60,"histoire d'un chien",$real,$acteur);
-// $film1->affichReal();
-$acteur->affichFilm();
-// $film->affichReal();
-// $acteur->affichFilm();
-// var_dump($film->getRealisateur()->getNom());
+$genre2 = new Genre("suspens");
 
+$role = new Role("jamesbond");
+$role1 = new Role("ouioui");
 
+$film = new Film("titanic","2000",100,"naufrage", $real,$genre);
+$film1 = new Film("le chat","12-12-1989",90,"histoire d'un chat",$real,$genre);
+$film2 = new Film("les affranchis","12-12-1989",120,"c'est l'histoire d'un mec",$real2,$genre2);
+$casting = new Casting($film,$acteur,$role);
+$casting1 = new Casting($film,$acteur1,$role1);
+$casting2 = new Casting($film1,$acteur,$role);
+echo $real -> affichFilm();
+echo $acteur -> affichFilm();
+echo $film2 -> affichFilm();
+echo $acteur->affichRole();
+echo $role->affichActeurs();
+echo $genre->affichFilmGenre();
+$casting->allFilm();
 ?>
   

@@ -1,11 +1,11 @@
 <?php 
 
-include 'Type.class.php';
-class Genre extends Type
+class Genre
 {
 	
 	// Propriétés
     private $film =[];
+    private $nom;
    
 	
 	
@@ -13,18 +13,30 @@ class Genre extends Type
 	// Liste des getters
 	public function __construct($nom)
     {
-        parent::__construct($nom);
+        $this->nom = $nom;
         
 
     }
     public function getFilm()
     {
         return $this->film;
+    }
+    public function getNom()
+    {
+        return $this->nom;
     }	
-    public function addFilm(film $film){
+    public function addFilm(Film $film){
 		
         array_push($this->film,$film);
-	}
+    }
+    public function affichFilmGenre(){
+        $txt = 'les films du genre '.$this->nom.' sont : <br>';
+        foreach ($this->film as $key ) {
+            $txt .=$key->getTitre().'<br>';
+        }
+        return $txt;
+        // return $txt;
+    }
     
 }
 ?>

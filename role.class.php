@@ -1,30 +1,34 @@
 <?php 
 // include 'Type.class.php';
-class Role extends Type
+class Role
 {
 	
 	// Propriétés
-    private $acteur=[];
-	private $film = [];
-	
+	private $role;
+	private $casting;
 	// Méthodes
 	// Liste des getters
-	public function __construct($nom,$film)
+	public function __construct($role)
     {
-        parent::__construct($nom);
-        
+        $this->role = $role;
+        $this->casting = [];
 
     }
-    public function addActeur(Acteur $acteur){
-		
-        array_push($this->acteur,$acteur);
-    }
-    public function addFilm(Film $film){
-		
-        array_push($this->film,$film);
-	}
-
-  
     
+    public function getRole(){
+        return $this->role;
+    }
+    public function addCasting(Casting $casting){
+        array_push($this->casting,$casting);
+    }
+    
+    public function affichActeurs(){
+        $txt = '<table><tr><td>role</td><td>nom acteur</td><td>titre film</td></tr>';
+        foreach ($this->casting as $key ) {
+            $txt .= '<tr><td>le role de :'.$this->role.' </td><td> '.$key->getActeur()->getNom().'</td>';
+            $txt .= '<td>'.$key->getFilm()->getTitre().'</td>';
+        }
+        return $txt .= '</table>';
+    }
 }
 ?>

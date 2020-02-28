@@ -8,13 +8,14 @@ class Film
     private $duree;
     private $synopsis;
     private $realisateur;
-    private $acteur;
+    private $casting;
+   
 
 	
 	
 	// Méthodes
 	// Liste des getters
-	public function __construct($titre,$sortie,$duree,$synopsis,$realisateur,$acteur,$genre)
+	public function __construct($titre,$sortie,$duree,$synopsis,$realisateur,$genre)
     {
         $this->titre = $titre;
         $this->sortie = $sortie;
@@ -22,10 +23,10 @@ class Film
         $this->synopsis = $synopsis;
         $this->realisateur = $realisateur;
         $realisateur ->addFilm($this);
-        $this->acteur = [];
-        $acteur ->addFilm($this);
-        // $this->genre = $genre;
+        $this->genre = $genre;
         $genre ->addFilm($this);
+        $this->casting =[];
+        
 
     }
 
@@ -49,13 +50,14 @@ class Film
 	{
 		return $this->realisateur;
     }
-    public function getActeur()
-	{
-		return $this->acteur;
-    }
+    
     public function getGenre()
 	{
 		return $this->genre;
+    }
+    public function getCasting()
+	{
+		return $this->casting;
 	}
 	
 	
@@ -79,19 +81,33 @@ class Film
         
             $this->duree = $duree;
     }	
-    public function seRrealisateur($realisateur)
+    public function setRrealisateur($realisateur)
     {
         
             $this->realisateur = $realisateur;
     }
-    public function setActeur($acteur)
-    {
-            $this->acteur = $acteur;
-    }	
+    
     public function affichReal()
     {
         echo '<div>nom du réalisateur : '.$this->realisateur->getNom().'</div>';
     }
+    public function addCasting(Casting $casting){
+        array_push($this->casting,$casting);
+    }
+    public function affichFilm()
+    {
+        $duree = date("H : i",mktime(0,$this->getDuree()));
+        $text = '<table><tbody><tr><td>titre du film :'.$this->getTitre().'</td> <td>genre : '.$this->getGenre()->getNom().'</td><td>Année de sortie : '.$this->getSortie().'</td><td>la durée est de : '.$duree.'<br>';
+        $text .= '<tr><td>Réalisateur nom: '.$this->getRealisateur()->getNom().'</td><td> prénom : '.$this->getRealisateur()->getPrenom().'</td></tr>';
+        foreach ($this->casting as $key ) {
+            $text .= '<tr><td>nom acteur :'.$key->getActeur()->getNom().'</td><td> prénom : '.$key->getActeur()->getPrenom().'</td></tr>';
+        }
+        
+        // $text .= 
+        return $text .= '</table>';
+    }
+   
+			
     
 }
 ?>
